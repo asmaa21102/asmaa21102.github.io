@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Task</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff4fa3'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/demo-api.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/core.js"></script>
+</head>
+<body class="app-body">
+<div class="shell">
+  <aside class="side" id="side">
+    <div class="logo"><span class="logo-mark">✓</span><b data-t="brand"></b></div>
+    <p class="hello" id="hello"></p>
+    <nav class="filters" id="filters"></nav>
+    <div class="side-head"><span data-t="categories"></span><button class="icon" id="add-cat" data-t-aria="add_category">＋</button></div>
+    <div class="cats" id="cats"></div>
+    <div class="side-foot">
+      <button class="pill" id="notif" data-t="notif_on"></button>
+      <div class="row"><button class="pill lang-btn" id="lang">EN</button><button class="pill" id="theme" aria-label="Theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button><button class="pill" id="logout" data-t="logout"></button></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="top">
+      <button class="icon menu" id="menu" aria-label="Menu">☰</button>
+      <div class="titles"><h1 id="view-title"></h1><p id="today-date"></p></div>
+      <input class="search" id="search" type="search" data-t-ph="search" />
+      <select id="sort" class="select">
+        <option value="due" data-t="sort_due"></option>
+        <option value="priority" data-t="sort_priority"></option>
+        <option value="created" data-t="sort_created"></option>
+      </select>
+      <button class="btn primary" id="new"><span>＋</span> <span data-t="new_task"></span></button>
+    </header>
+
+    <section class="stats" id="stats"></section>
+    <section id="list" class="list" aria-live="polite"></section>
+  </main>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <form class="sheet" id="task-form" novalidate>
+    <header><h2 id="modal-title"></h2><button type="button" class="icon" data-close aria-label="close">✕</button></header>
+    <label class="field"><span data-t="title"></span><input name="title" maxlength="160" required /></label>
+    <label class="field"><span data-t="description"></span><textarea name="description" rows="3" maxlength="4000"></textarea></label>
+    <div class="grid2">
+      <label class="field"><span data-t="date"></span><input name="due_date" type="date" required /></label>
+      <label class="field"><span data-t="time"></span><input name="due_time" type="time" required /></label>
+    </div>
+    <div class="field"><span data-t="priority"></span>
+      <div class="prio" id="prio">
+        <label><input type="radio" name="priority_level" value="Low" /><b class="low" data-t="Low"></b></label>
+        <label><input type="radio" name="priority_level" value="Medium" checked /><b class="med" data-t="Medium"></b></label>
+        <label><input type="radio" name="priority_level" value="High" /><b class="high" data-t="High"></b></label>
+      </div>
+    </div>
+    <div class="grid3">
+      <label class="field"><span data-t="category"></span><select name="category_id" class="select" id="cat-select"></select></label>
+      <label class="field"><span data-t="remind"></span><select name="remind_before" class="select">
+        <option value="0" data-t="r0"></option><option value="5" data-t="r5"></option><option value="10" data-t="r10" selected></option><option value="30" data-t="r30"></option><option value="60" data-t="r60"></option><option value="1440" data-t="r1440"></option>
+      </select></label>
+      <label class="field"><span data-t="repeat"></span><select name="repeat_rule" class="select">
+        <option value="none" data-t="none_r"></option><option value="daily" data-t="daily"></option><option value="weekly" data-t="weekly"></option><option value="monthly" data-t="monthly"></option>
+      </select></label>
+    </div>
+    <div class="field"><span data-t="subtasks"></span>
+      <ul class="subs" id="subs"></ul>
+      <input id="sub-input" data-t-ph="add_sub" maxlength="160" />
+    </div>
+    <p class="error" id="form-error" role="alert"></p>
+    <footer><button type="button" class="btn danger" id="delete" data-t="delete" hidden></button><span class="sp"></span><button type="button" class="btn ghost" data-close data-t="cancel"></button><button class="btn primary" data-t="save"></button></footer>
+  </form>
+</div>
+
+<div class="reminders" id="reminders" aria-live="assertive"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
