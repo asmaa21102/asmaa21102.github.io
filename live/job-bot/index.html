@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>بوت التوظيف التقني</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root { --blue: #035b73; --gold: #bc935a; --ink: #142d36; --muted: #5e7680; --ivory: #f8f6f1; --line: #dfe6e8; --card: #fff; --tg: #e7ebf0; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--ivory); color: var(--ink); font: 16px/1.75 'IBM Plex Sans Arabic', 'Inter', system-ui, sans-serif; }
+[dir=ltr] body { font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+.top { position: sticky; top: 0; z-index: 9; background: color-mix(in srgb, var(--ivory) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+.top b { flex: 1; }
+.btn { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); text-decoration: none; color: inherit; font-weight: 600; font-size: 14px; }
+.btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.hero { padding: 36px 0 10px; }
+.hero img { width: 100%; border-radius: 20px; display: block; }
+section { padding: 40px 0 0; }
+h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: 26px; color: var(--blue); }
+h2::before { content: ''; width: 6px; height: 26px; border-radius: 3px; background: var(--gold); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.kpi { padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--gold); }
+.kpi b { display: block; font: 700 34px/1.1 'Inter', sans-serif; color: var(--blue); }
+.kpi span { color: var(--muted); font-size: 14px; }
+.two { display: grid; grid-template-columns: 1fr 360px; gap: 24px; align-items: start; }
+.feats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.feat { padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); }
+.feat b { display: block; margin-bottom: 2px; }
+.feat span { color: var(--muted); font-size: 14px; }
+/* Telegram-like chat mock */
+.phone { border-radius: 28px; background: #1b2a33; padding: 10px; box-shadow: 0 30px 60px -30px rgba(3,91,115,.6); }
+.chat { height: 560px; overflow-y: auto; border-radius: 20px; padding: 14px 12px; background: var(--tg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='2' cy='2' r='1.2' fill='%23cfd8df'/%3E%3C/svg%3E"); display: flex; flex-direction: column; gap: 8px; }
+.msg { max-width: 86%; padding: 8px 12px; border-radius: 14px; font-size: 14px; line-height: 1.55; white-space: pre-line; animation: in .35s both; }
+.msg.bot { align-self: flex-start; background: #fff; border-start-start-radius: 4px; }
+.msg.me { align-self: flex-end; background: #d9fdd3; border-start-end-radius: 4px; }
+[dir=rtl] .msg.bot { align-self: flex-end; } [dir=rtl] .msg.me { align-self: flex-start; }
+.kb { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 6px; }
+.kb span { padding: 6px; border-radius: 8px; background: #eef4f7; color: var(--blue); font-size: 12px; text-align: center; font-weight: 600; }
+.chat-head { display: flex; align-items: center; gap: 10px; padding: 6px 8px 10px; color: #fff; }
+.chat-head img { width: 36px; height: 36px; border-radius: 50%; background: #fff; }
+.chat-head small { display: block; color: #9fb3ba; font-size: 12px; }
+.replay { margin-top: 10px; width: 100%; height: 40px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font-weight: 600; }
+@keyframes in { from { opacity: 0; transform: translateY(6px); } }
+.flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.flow div { padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); }
+.flow time { display: inline-block; padding: 2px 10px; border-radius: 99px; background: var(--gold); color: #fff; font-weight: 700; font-size: 13px; }
+.flow b { display: block; margin-top: 6px; }
+.flow span { color: var(--muted); font-size: 14px; }
+.funnel { display: grid; gap: 6px; }
+.funnel div { display: grid; grid-template-columns: 230px 1fr 50px; gap: 10px; align-items: center; font-size: 14px; }
+.funnel i { height: 12px; border-radius: 9px; background: #e7eef0; overflow: hidden; }
+.funnel i b { display: block; height: 100%; background: var(--blue); border-radius: 9px; }
+.funnel em { font-style: normal; font-weight: 700; text-align: end; }
+.cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.cards img { width: 100%; border-radius: 14px; border: 1px solid var(--line); cursor: zoom-in; display: block; }
+video { width: 100%; max-width: 360px; border-radius: 50%; display: block; margin: 0 auto; }
+.note { color: var(--muted); font-size: 13px; }
+.foot { margin-top: 48px; padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.zoom { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(10,20,25,.8); cursor: zoom-out; }
+.zoom img { max-width: 100%; max-height: 92vh; border-radius: 12px; }
+@media (max-width: 860px) { .two, .feats { grid-template-columns: 1fr; } .kpis, .flow, .cards { grid-template-columns: repeat(2, 1fr); } .funnel div { grid-template-columns: 1fr 90px 40px; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><b data-t="brand"></b><button class="btn" id="lang">EN</button><a class="btn primary" href="bot_report.pdf" target="_blank" rel="noopener" data-t="pdf"></a></div></header>
+<main class="wrap">
+  <div class="hero"><img src="welcome.png" alt="" /></div>
+  <section><div class="kpis">
+    <div class="kpi"><b>256</b><span data-t="k1"></span></div><div class="kpi"><b>3</b><span data-t="k2"></span></div>
+    <div class="kpi"><b>7</b><span data-t="k3"></span></div><div class="kpi"><b>12</b><span data-t="k4"></span></div>
+  </div></section>
+  <section>
+    <h2 data-t="feat_h"></h2>
+    <div class="two">
+      <div><p data-t="idea"></p><div class="feats" id="feats"></div></div>
+      <div>
+        <div class="phone"><div class="chat-head"><img src="avatar.png" alt="" /><div><b data-t="brand"></b><small data-t="online"></small></div></div><div class="chat" id="chat"></div></div>
+        <button class="replay" id="replay" data-t="replay"></button>
+        <p class="note" data-t="mock"></p>
+      </div>
+    </div>
+  </section>
+  <section><h2 data-t="flow_h"></h2><div class="flow" id="flow"></div></section>
+  <section><h2 data-t="funnel_h"></h2><p class="note" data-t="funnel_p"></p><div class="funnel" id="funnel"></div><p data-t="lesson"></p></section>
+  <section><h2 data-t="welcome_h"></h2><video src="intro.mp4" poster="intro_preview.png" controls playsinline></video><p class="note" style="text-align:center" data-t="welcome_p"></p></section>
+  <section><h2 data-t="cards_h"></h2><p class="note" data-t="cards_p"></p><div class="cards" id="cards"></div></section>
+</main>
+<footer class="foot wrap" data-t="foot"></footer>
+<div class="zoom" id="zoom" hidden><img alt="" /></div>
+<script>
+const T = {
+  ar: { brand: 'بوت التوظيف التقني', pdf: 'التقرير التعريفي (PDF)', online: 'بوت على تليجرام', k1: 'وظيفة تقنية في القاعدة', k2: 'مصادر مجانية تُجمع يوميًا', k3: 'خطوات تنظيف لكل دفعة', k4: 'مجالًا تقنيًا للتصنيف',
+    feat_h: 'ماذا يقدّم', idea: 'بوت على تليجرام يجمع وظائف التقنية في تركيا كل صباح من مصادر مجانية، وينظّفها بخطوات البحث نفسها، ثم يوصلها إلى الخريج حسب مجاله ومدينته ومستواه. هو الخطوة العملية بعد بحث «ماذا تطلب وظائف التقنية في تركيا؟»: بدل أن تبقى الإعلانات في جدول، تصل إلى الخريج نفسه.',
+    feats: [['🔎 بحث بكلمة واحدة', 'يكتب «Python Istanbul Junior» فيفهم البوت المجال والمدينة والمستوى، ويوسّع البحث تدريجيًا إن لم يجد تطابقًا.'], ['📑 تصفّح في رسالة واحدة', 'بطاقة لكل وظيفة مع أزرار التنقل وزر التقديم المباشر.'], ['⭐ حفظ ومشاركة', 'قائمة «وظائفي المحفوظة»، وإرسال أي وظيفة لصديق بضغطة.'], ['🎯 ملخص صباحي', 'يختار تفضيلاته مرة واحدة، فتصله الساعة 9:00 الوظائف الجديدة المطابقة وحدها.'], ['🏢 نشر وظيفة للشركات', 'نموذج من 8 خطوات داخل البوت، يمر بفحص التكرار قبل النشر.'], ['📊 إحصاءات وتقرير البحث', 'أكثر المجالات والمدن طلبًا، وأقسام تقرير البحث داخل المحادثة.']],
+    flow_h: 'كيف يعمل كل يوم', flow: [['8:30', 'الجمع', 'قناتا تليجرام عامتان وواجهة Remotive، بلا اشتراك مدفوع.'], ['تلقائي', 'التنظيف', '7 خطوات تحذف المكرر وغير التقني والمشبوه والقديم.'], ['تلقائي', 'التصنيف', 'المجال من المسمى، والمدينة وطريقة العمل والمستوى من النص.'], ['9:00', 'الملخص', 'يصل كل مستخدم ما يطابق تفضيلاته ولم يره من قبل.']],
+    funnel_h: 'التنظيف بالأرقام', funnel_p: 'أول دفعة (2026-10-08): من 139 منشورًا خامًا إلى 9 وظائف أُضيفت إلى القاعدة.',
+    funnel: ['الخام من المصادر الثلاثة', 'بعد حذف إعادة النشر', 'بعد حذف ما ليس إعلان وظيفة', 'بعد حذف غير التقني', 'بعد حذف الدورات والعمل بالساعة', 'بعد حذف ما هو خارج تركيا', 'أُضيف إلى القاعدة'],
+    lesson: 'ما تعلّمناه: من 64 منشورًا فريدًا في القناتين العربيتين بقي إعلان تقني واحد، فالقنوات العامة وحدها لا تكفي لبوت تقني، والمصدر الأغنى ما زال LinkedIn (استنتاج من عيّنة يوم واحد).',
+    welcome_h: 'ترحيب بالصوت والصورة', welcome_p: 'فيديو دائري يصل عند الضغط على «ابدأ»: روبوت كرتوني يلوّح ويرحّب بصوت مُولَّد (edge-tts)، والفم يتحرك مع الصوت.',
+    cards_h: 'تقرير البحث داخل البوت', cards_p: 'ثماني بطاقات، قسم لكل بطاقة، يتصفحها المستخدم داخل المحادثة. اضغط لتكبيرها.',
+    replay: '▶ أعد العرض', mock: 'محاكاة توضيحية لمحادثة مع البوت.',
+    chat: [['me', '/start'], ['bot', 'أهلًا بك في بوت التوظيف التقني 👋\nابحث بكلمة ومدينة، واحفظ ما يعجبك، وتصلك الوظائف الجديدة كل صباح.', ['🔎 ابحث عن وظيفة', '🎯 تفضيلاتي', '⭐ المحفوظة', '📊 إحصاءات']], ['me', 'Python Istanbul Junior'], ['bot', '🔹 Junior Python Developer\n\n🏢 شركة برمجيات\n📍 Istanbul\n💻 Hybrid\n🎓 Entry level\n🗂 برمجيات', ['◀️', '▶️', '⭐ احفظ', '📨 قدّم']], ['me', '⭐ احفظ'], ['bot', 'حُفظت في «وظائفي المحفوظة» ✅']],
+    foot: 'المصادر: قاعدة البوت وسجل الجمع بتاريخ 2026-10-08. وظائف Remotive منسوبة إليها مع رابطها الأصلي. البوت لا يعمل من هذه الصفحة؛ يحتاج خادمًا ومفتاح تليجرام.' },
+  en: { brand: 'Tech Jobs Bot', pdf: 'Overview report (PDF, Arabic)', online: 'Telegram bot', k1: 'tech jobs in the database', k2: 'free sources collected daily', k3: 'cleaning steps per batch', k4: 'tech fields for classification',
+    feat_h: 'What it offers', idea: 'A Telegram bot that collects tech jobs in Turkey every morning from free sources, cleans them with the same steps as the research, and delivers them to graduates by field, city and level. It is the practical step after the research “What do tech jobs in Turkey ask for?”: instead of staying in a spreadsheet, the ads reach the graduate.',
+    feats: [['🔎 One-line search', 'Type “Python Istanbul Junior” and the bot understands field, city and level, widening the search step by step if nothing matches exactly.'], ['📑 Browse in one message', 'A card per job with navigation buttons and a direct apply button.'], ['⭐ Save and share', 'A “My saved jobs” list, and any job can be sent to a friend in one tap.'], ['🎯 Morning digest', 'Set preferences once and get only the new matching jobs at 9:00 every day.'], ['🏢 Job posting for companies', 'An 8-step form inside the bot, checked for duplicates before publishing.'], ['📊 Stats and the research report', 'The most demanded fields and cities, and the report sections inside the chat.']],
+    flow_h: 'How it works every day', flow: [['8:30', 'Collect', 'Two public Telegram channels and the Remotive API, with no paid subscription.'], ['Auto', 'Clean', '7 steps remove duplicates, non-tech, suspicious and old posts.'], ['Auto', 'Classify', 'Field from the title; city, work mode and level from the text.'], ['9:00', 'Digest', 'Each user gets what matches their preferences and hasn’t been seen yet.']],
+    funnel_h: 'Cleaning in numbers', funnel_p: 'First batch (2026-10-08): from 139 raw posts to 9 jobs added to the database.',
+    funnel: ['Raw from the three sources', 'After removing reposts', 'After removing non-job posts', 'After removing non-tech', 'After removing courses and hourly gigs', 'After removing outside Turkey', 'Added to the database'],
+    lesson: 'Lesson learned: of 64 unique posts in the two Arabic channels, only one was a tech job, so public channels alone are not enough for a tech bot and LinkedIn is still the richest source (a conclusion from a one-day sample).',
+    welcome_h: 'A welcome with voice and video', welcome_p: 'A round video sent when the user taps “Start”: a cartoon robot waves and says hello with a generated voice (edge-tts), its mouth moving with the sound.',
+    cards_h: 'The research report inside the bot', cards_p: 'Eight cards, one per section, browsed inside the chat (in Arabic). Click to enlarge.',
+    replay: '▶ Replay', mock: 'Illustrative simulation of a chat with the bot.',
+    chat: [['me', '/start'], ['bot', 'Welcome to the Tech Jobs Bot 👋\nSearch by keyword and city, save what you like and get new jobs every morning.', ['🔎 Find a job', '🎯 Preferences', '⭐ Saved', '📊 Stats']], ['me', 'Python Istanbul Junior'], ['bot', '🔹 Junior Python Developer\n\n🏢 Software company\n📍 Istanbul\n💻 Hybrid\n🎓 Entry level\n🗂 Software', ['◀️', '▶️', '⭐ Save', '📨 Apply']], ['me', '⭐ Save'], ['bot', 'Saved to “My saved jobs” ✅']],
+    foot: 'Sources: the bot database and collection log dated 2026-10-08. Remotive jobs are credited with their original link. The bot does not run from this page; it needs a server and a Telegram token.' },
+  tr: { brand: 'Teknoloji İş Botu', pdf: 'Tanıtım raporu (PDF, Arapça)', online: 'Telegram botu', k1: 'veritabanındaki teknoloji işi', k2: 'her gün toplanan ücretsiz kaynak', k3: 'parti başına temizlik adımı', k4: 'sınıflandırma için teknoloji alanı',
+    feat_h: 'Neler sunuyor', idea: 'Türkiye’deki teknoloji işlerini her sabah ücretsiz kaynaklardan toplayan, araştırmadaki adımlarla temizleyen ve mezunlara alanına, şehrine ve seviyesine göre ulaştıran bir Telegram botu. “Türkiye’deki teknoloji iş ilanları ne istiyor?” araştırmasından sonraki pratik adım: ilanlar tabloda kalmak yerine mezuna ulaşıyor.',
+    feats: [['🔎 Tek satırda arama', '“Python Istanbul Junior” yazınca bot alanı, şehri ve seviyeyi anlar; tam eşleşme yoksa aramayı adım adım genişletir.'], ['📑 Tek mesajda gezinme', 'Her iş için gezinme düğmeleri ve doğrudan başvuru düğmesi olan bir kart.'], ['⭐ Kaydet ve paylaş', '“Kayıtlı işlerim” listesi; her iş tek dokunuşla bir arkadaşa gönderilebilir.'], ['🎯 Sabah özeti', 'Tercihlerini bir kez seç, her gün 9:00’da yalnızca yeni eşleşen işler gelsin.'], ['🏢 Şirketler için ilan', 'Bot içinde 8 adımlı form; yayından önce tekrar kontrolünden geçer.'], ['📊 İstatistikler ve araştırma raporu', 'En çok talep gören alanlar ve şehirler; rapor bölümleri sohbetin içinde.']],
+    flow_h: 'Her gün nasıl çalışır', flow: [['8:30', 'Toplama', 'İki herkese açık Telegram kanalı ve Remotive API; ücretli abonelik yok.'], ['Otomatik', 'Temizlik', '7 adım tekrarları, teknik olmayanları, şüphelileri ve eskileri çıkarır.'], ['Otomatik', 'Sınıflandırma', 'Alan unvandan; şehir, çalışma biçimi ve seviye metinden.'], ['9:00', 'Özet', 'Her kullanıcıya tercihine uyan ve daha önce görmediği işler gelir.']],
+    funnel_h: 'Rakamlarla temizlik', funnel_p: 'İlk parti (2026-10-08): 139 ham gönderiden veritabanına eklenen 9 işe.',
+    funnel: ['Üç kaynaktan ham', 'Tekrar yayınlar çıkınca', 'İş ilanı olmayanlar çıkınca', 'Teknik olmayanlar çıkınca', 'Kurslar ve saatlik işler çıkınca', 'Türkiye dışı çıkınca', 'Veritabanına eklenen'],
+    lesson: 'Öğrendiğimiz: iki Arapça kanaldaki 64 benzersiz gönderiden yalnızca biri teknoloji işiydi; yani herkese açık kanallar tek başına bir teknoloji botu için yetmiyor, en zengin kaynak hâlâ LinkedIn (tek günlük örneklemden bir çıkarım).',
+    welcome_h: 'Sesli ve görüntülü karşılama', welcome_p: '“Başlat”a basınca gelen yuvarlak video: karikatür bir robot el sallar ve üretilmiş bir sesle (edge-tts) selam verir, ağzı sesle birlikte hareket eder.',
+    cards_h: 'Bot içindeki araştırma raporu', cards_p: 'Her bölüm için bir kart olmak üzere sekiz kart, sohbet içinde gezilir (Arapça). Büyütmek için tıklayın.',
+    replay: '▶ Tekrar oynat', mock: 'Bot ile bir sohbetin örnek canlandırması.',
+    chat: [['me', '/start'], ['bot', 'Teknoloji İş Botu’na hoş geldin 👋\nKelime ve şehirle ara, beğendiklerini kaydet, yeni işler her sabah gelsin.', ['🔎 İş ara', '🎯 Tercihlerim', '⭐ Kayıtlılar', '📊 İstatistik']], ['me', 'Python Istanbul Junior'], ['bot', '🔹 Junior Python Developer\n\n🏢 Yazılım şirketi\n📍 Istanbul\n💻 Hybrid\n🎓 Entry level\n🗂 Yazılım', ['◀️', '▶️', '⭐ Kaydet', '📨 Başvur']], ['me', '⭐ Kaydet'], ['bot', '“Kayıtlı işlerim”e eklendi ✅']],
+    foot: 'Kaynaklar: 2026-10-08 tarihli bot veritabanı ve toplama kaydı. Remotive işleri özgün bağlantılarıyla kaynak gösterilir. Bot bu sayfadan çalışmaz; bir sunucu ve Telegram anahtarı gerekir.' },
+};
+const FUNNEL = [139, 64, 62, 12, 11, 9, 9];
+const CARDS = ['summary', 'intro', 'method', 'quant', 'qual', 'conclusions', 'recs', 'refs'];
+const LANGS = ['ar', 'en', 'tr'];
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const q = new URLSearchParams(location.search).get('lang');
+let lang = LANGS.includes(q) ? q : (() => { try { return localStorage.getItem('jb-lang') || 'ar'; } catch { return 'ar'; } })();
+let timers = [];
+function chat() {
+  timers.forEach(clearTimeout); timers = [];
+  const box = $('#chat'); box.innerHTML = '';
+  T[lang].chat.forEach(([who, text, kb], i) => timers.push(setTimeout(() => {
+    box.insertAdjacentHTML('beforeend', `<div class="msg ${who}">${esc(text)}${kb ? `<div class="kb">${kb.map((k) => `<span>${esc(k)}</span>`).join('')}</div>` : ''}</div>`);
+    box.scrollTop = box.scrollHeight;
+  }, 400 + i * 1100)));
+}
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.title = t.brand;
+  document.querySelectorAll('[data-t]').forEach((el) => (el.textContent = t[el.dataset.t]));
+  $('#lang').textContent = LANGS[(LANGS.indexOf(lang) + 1) % 3].toUpperCase();
+  $('#feats').innerHTML = t.feats.map(([h, p]) => `<div class="feat"><b>${esc(h)}</b><span>${esc(p)}</span></div>`).join('');
+  $('#flow').innerHTML = t.flow.map(([tm, h, p]) => `<div><time>${esc(tm)}</time><b>${esc(h)}</b><span>${esc(p)}</span></div>`).join('');
+  $('#funnel').innerHTML = t.funnel.map((l, i) => `<div><span>${esc(l)}</span><i><b style="width:${(FUNNEL[i] / 139) * 100}%"></b></i><em>${FUNNEL[i]}</em></div>`).join('');
+  $('#cards').innerHTML = CARDS.map((c) => `<img src="cards/${c}.png" alt="" loading="lazy" />`).join('');
+  chat();
+}
+document.addEventListener('click', (e) => {
+  if (e.target.matches('.cards img')) { $('#zoom img').src = e.target.src; $('#zoom').hidden = false; }
+  else if (e.target.closest('#zoom')) $('#zoom').hidden = true;
+});
+$('#replay').addEventListener('click', chat);
+$('#lang').addEventListener('click', () => { lang = LANGS[(LANGS.indexOf(lang) + 1) % 3]; try { localStorage.setItem('jb-lang', lang); } catch {} render(); });
+render();
+</script>
+</body>
+</html>

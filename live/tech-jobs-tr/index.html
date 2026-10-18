@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الطلب على الوظائف التقنية في تركيا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root { --blue: #035b73; --blue-2: #0a7590; --gold: #bc935a; --ink: #142d36; --muted: #5e7680; --ivory: #f8f6f1; --mist: #e7eef0; --line: #dfe6e8; --card: #fff; }
+.dark { --ink: #e9f1f3; --muted: #9fb3ba; --ivory: #0e1a1f; --mist: #152a32; --line: #22404a; --card: #12242b; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--ivory); color: var(--ink); font: 16px/1.75 'IBM Plex Sans Arabic', 'Inter', system-ui, sans-serif; }
+[dir=ltr] body { font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif; }
+button, select { font: inherit; color: inherit; }
+.wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+.top { position: sticky; top: 0; z-index: 9; background: color-mix(in srgb, var(--ivory) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+.top b { flex: 1; font-size: 15px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); text-decoration: none; color: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+.btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+.hero { background: var(--blue); color: #f8f6f1; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: auto 0 0 0; height: 6px; background: var(--gold); }
+.hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; padding: 48px 0 56px; }
+.kicker { color: var(--gold); font-weight: 700; letter-spacing: .02em; margin: 0 0 8px; }
+.hero h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); line-height: 1.2; }
+.hero p { color: #d8e6ea; max-width: 560px; }
+.hero img { width: 100%; border-radius: 18px; background: #f8f6f1; }
+.tag { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 99px; background: rgba(188,147,90,.2); color: #f3dcb8; font-size: 13px; font-weight: 600; }
+section { padding: 44px 0 0; }
+h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-size: 26px; color: var(--blue); }
+.dark h2 { color: #7cc6d8; }
+h2::before { content: ''; width: 6px; height: 26px; border-radius: 3px; background: var(--gold); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.kpi { padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--gold); }
+.kpi b { display: block; font: 700 34px/1.1 'Inter', sans-serif; color: var(--blue); }
+.dark .kpi b { color: #7cc6d8; }
+.kpi span { color: var(--muted); font-size: 14px; }
+.find { display: grid; gap: 10px; }
+.find div { padding: 14px 18px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); }
+.find strong { color: var(--blue); }
+.dark .find strong { color: #7cc6d8; }
+.explorer { display: grid; grid-template-columns: 260px 1fr; gap: 18px; }
+.fams { display: flex; flex-direction: column; gap: 6px; }
+.fam { display: flex; justify-content: space-between; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); cursor: pointer; text-align: start; }
+.fam.on { background: var(--blue); border-color: var(--blue); color: #fff; }
+.panel { padding: 22px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
+.panel h3 { margin: 0 0 4px; font-size: 22px; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 18px; }
+.stats span { padding: 6px 12px; border-radius: 99px; background: var(--mist); font-size: 14px; }
+.bar { display: grid; grid-template-columns: 200px 1fr 56px; gap: 12px; align-items: center; margin: 8px 0; font-size: 14px; }
+.bar i { display: block; height: 12px; border-radius: 9px; background: var(--mist); overflow: hidden; }
+.bar i b { display: block; height: 100%; border-radius: 9px; background: linear-gradient(90deg, var(--blue), var(--blue-2)); transition: width .6s cubic-bezier(.2,.8,.2,1); }
+[dir=rtl] .bar i b { background: linear-gradient(270deg, var(--blue), var(--blue-2)); }
+.bar em { font-style: normal; font-weight: 700; direction: ltr; text-align: end; }
+.note { color: var(--muted); font-size: 13px; margin-top: 12px; }
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+figure { margin: 0; padding: 14px; border-radius: 18px; background: #fff; border: 1px solid var(--line); cursor: zoom-in; }
+figure img { width: 100%; display: block; }
+figcaption { margin-top: 8px; color: #5e7680; font-size: 14px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; counter-reset: s; }
+.steps div { padding: 16px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); }
+.steps div::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; margin-bottom: 8px; border-radius: 9px; background: var(--gold); color: #fff; font-weight: 700; }
+.steps b { display: block; }
+.steps span { color: var(--muted); font-size: 14px; }
+.limits { padding: 18px 20px; border-radius: 18px; background: color-mix(in srgb, var(--gold) 14%, var(--card)); border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--line)); }
+.limits ul { margin: 6px 0 0; padding-inline-start: 20px; }
+.foot { margin: 48px 0 0; padding: 22px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.zoom { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 20px; background: rgba(10,20,25,.8); cursor: zoom-out; }
+.zoom img { max-width: 100%; max-height: 92vh; border-radius: 12px; background: #fff; }
+@media (max-width: 820px) {
+  .hero .wrap, .explorer { grid-template-columns: 1fr; }
+  .kpis, .steps { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: 1fr; }
+  .fams { flex-direction: row; flex-wrap: wrap; }
+  .bar { grid-template-columns: 1fr 90px 50px; }
+}
+</style>
+<script>try { if (localStorage.getItem('tj-theme') === 'dark') document.documentElement.classList.add('dark'); } catch {}</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <b data-t="brand"></b>
+  <button class="btn" id="lang">EN</button>
+  <button class="btn" id="theme" aria-label="Theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
+  <a class="btn primary" href="report.pdf" target="_blank" rel="noopener" data-t="pdf"></a>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <p class="kicker" data-t="kicker"></p>
+    <h1 data-t="title"></h1>
+    <p data-t="lead"></p>
+    <span class="tag" data-t="prelim"></span>
+  </div>
+  <img src="fig/cover_line_blue.png" alt="" />
+</div></div>
+
+<main class="wrap">
+  <section>
+    <div class="kpis">
+      <div class="kpi"><b>252</b><span data-t="k1"></span></div>
+      <div class="kpi"><b>73.8%</b><span data-t="k2"></span></div>
+      <div class="kpi"><b>4</b><span data-t="k3"></span></div>
+      <div class="kpi"><b>79.7%</b><span data-t="k4"></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-t="find_h"></h2>
+    <div class="find" id="find"></div>
+  </section>
+
+  <section>
+    <h2 data-t="exp_h"></h2>
+    <p class="note" style="margin-top:-6px" data-t="exp_p"></p>
+    <div class="explorer">
+      <div class="fams" id="fams"></div>
+      <div class="panel" id="panel"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-t="method_h"></h2>
+    <div class="steps">
+      <div><b data-t="s1"></b><span data-t="s1p"></span></div>
+      <div><b data-t="s2"></b><span data-t="s2p"></span></div>
+      <div><b data-t="s3"></b><span data-t="s3p"></span></div>
+      <div><b data-t="s4"></b><span data-t="s4p"></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-t="fig_h"></h2>
+    <p class="note" style="margin-top:-6px" data-t="fig_p"></p>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section>
+    <div class="limits"><b data-t="lim_h"></b><ul id="limits"></ul></div>
+  </section>
+</main>
+<footer class="foot wrap" data-t="foot"></footer>
+<div class="zoom" id="zoom" hidden><img alt="" /></div>
+
+<script>
+const T = {
+  ar: {
+    brand: 'الطلب على الوظائف التقنية في تركيا', pdf: 'التقرير الكامل (PDF)', kicker: 'بحث تطبيقي · تحليل بيانات · 2026',
+    title: 'ماذا تطلب إعلانات الوظائف التقنية في تركيا؟',
+    lead: 'تحليل لـ 252 إعلانًا تقنيًا على LinkedIn في إسطنبول وأنقرة وبورصة وغازي عنتاب: من أي عائلات الوظائف يأتي الطلب، وما الخبرة والتعليم واللغة والأدوات المطلوبة، وكيف تخاطب الإعلانات المتقدّم.',
+    prelim: 'النتائج أولية: اختبار الثبات لم يكتمل بعد',
+    k1: 'إعلانًا تقنيًا بعد التنظيف', k2: 'تذكر سنوات خبرة (186 إعلانًا)', k3: 'سنوات: وسيط الخبرة المطلوبة', k4: 'من الإعلانات بلغت 200 متقدم',
+    find_h: 'أبرز ما كشفه التحليل',
+    finds: [['الطلب متركّز', 'تطوير البرمجيات والشبكات والبيانات تجمع 166 إعلانًا من 252 (65.9%).'], ['الخبرة قبل الفرصة', '75.8% من إعلانات مستوى «مساعد» التي تذكر الخبرة تشترط 3 سنوات فأكثر.'], ['لكل عائلة عُدّتها', 'الأمن السيبراني يطلب شهادة مهنية في 78.6% من إعلاناته، والبرمجيات في 9.0%.'], ['الإنجليزية والشهادة', 'الإنجليزية في 52.8% من الإعلانات، والبكالوريوس في 50.4%.'], ['المنافسة شديدة', '79.7% من الإعلانات التي تعرض عدد المتقدمين بلغت 200 متقدم (196 من 246).']],
+    exp_h: 'استكشف حسب عائلة الوظائف', exp_p: 'اختر عائلة لترى عدد إعلاناتها، ووسيط الخبرة، وأكثر المتطلبات ذكرًا فيها. الأرقام محسوبة من البيانات بعد التنظيف.',
+    ads: 'إعلان', median: 'وسيط الخبرة', years: 'سنوات', english: 'تطلب الإنجليزية', none: 'لا يكفي العدد', top: 'أكثر ما يُذكر في الإعلانات',
+    method_h: 'المنهجية', s1: 'الجمع', s1p: '263 إعلانًا من LinkedIn في 3 دفعات (5 و7 أكتوبر 2026) بعشرين مسمى وظيفيًا بالتركية والإنجليزية.', s2: 'التنظيف', s2p: '8 خطوات موثّقة: حذف إعادة النشر ومنصات العمل الحر، ووسم المشكوك فيه بدل حذفه. بقي 252.', s3: 'الرصد الكمي', s3p: 'دليل من 14 محورًا و89 مؤشرًا بكلمات دالة بالتركية والإنجليزية.', s4: 'التحليل النوعي', s4p: '592 مقطعًا من أوصاف 20 إعلانًا رُمّزت بـ 26 رمزًا في 6 موضوعات.',
+    fig_h: 'أشكال التقرير', fig_p: 'من التقرير النهائي (بالعربية). اضغط على أي شكل لتكبيره.',
+    figs: ['عائلات الوظائف', 'المدن', 'المستويات', 'الخبرة المطلوبة', 'الخبرة حسب المستوى', 'التعليم واللغة', 'أكثر المتطلبات ذكرًا', 'المتطلبات حسب العائلة', 'طريقة العمل', 'الموضوعات النوعية', 'عدد المتقدمين'],
+    lim_h: 'حدود الدراسة', limits: ['البيانات لقطة من أسبوع واحد، فالفرضية عن مواسم ارتفاع الطلب وانخفاضه لم تُختبر بعد وتحتاج جمعًا أسبوعيًا لأشهر.', 'تقيس الإعلانات الطلب المعلن على LinkedIn، لا كل الوظائف المتاحة في السوق.', 'معامل الثبات (ألفا كريبندورف) لم يُحسب بعد، والرصد الآلي لم يُراجع يدويًا؛ لذلك توصف كل النتائج بأنها أولية.'],
+    foot: 'البيانات: إعلانات LinkedIn العامة، جُمعت في 5 و7 أكتوبر 2026 (ن = 252). تعرض الصفحة أرقامًا مجمّعة فقط، ولا تنشر بيانات الإعلانات أو الشركات.',
+  },
+  en: {
+    brand: 'Demand for tech jobs in Turkey', pdf: 'Full report (PDF)', kicker: 'Applied research · Data analysis · 2026',
+    title: 'What do tech job ads in Turkey ask for?',
+    lead: 'An analysis of 252 tech job ads on LinkedIn in Istanbul, Ankara, Bursa and Gaziantep: which job families the demand comes from, what experience, education, language and tools are required, and how the ads address applicants.',
+    prelim: 'Preliminary results: the reliability test is not finished yet',
+    k1: 'tech ads after cleaning', k2: 'mention years of experience (186 ads)', k3: 'years: median experience required', k4: 'of ads reached 200 applicants',
+    find_h: 'Key findings',
+    finds: [['Demand is concentrated', 'Software development, networks and data make up 166 of 252 ads (65.9%).'], ['Experience before opportunity', '75.8% of “Associate” ads that mention experience require 3 years or more.'], ['Each family has its own toolkit', 'Cybersecurity asks for a professional certificate in 78.6% of its ads; software in 9.0%.'], ['English and a degree', 'English appears in 52.8% of ads and a bachelor’s degree in 50.4%.'], ['Fierce competition', '79.7% of ads that show the applicant count reached 200 applicants (196 of 246).']],
+    exp_h: 'Explore by job family', exp_p: 'Pick a family to see its number of ads, the median experience and the requirements mentioned most. Computed from the cleaned data.',
+    ads: 'ads', median: 'Median experience', years: 'years', english: 'ask for English', none: 'too few ads', top: 'Most mentioned in the ads',
+    method_h: 'Method', s1: 'Collection', s1p: '263 LinkedIn ads in 3 batches (5 and 7 October 2026) using twenty job titles in Turkish and English.', s2: 'Cleaning', s2p: '8 documented steps: removing reposts and freelance platforms, and flagging doubtful ads instead of deleting them. 252 remained.', s3: 'Quantitative coding', s3p: 'A guide of 14 axes and 89 indicators with keywords in Turkish and English.', s4: 'Qualitative analysis', s4p: '592 segments from 20 job descriptions coded with 26 codes in 6 themes.',
+    fig_h: 'Figures from the report', fig_p: 'From the final report (in Arabic). Click any figure to enlarge it.',
+    figs: ['Job families', 'Cities', 'Levels', 'Experience required', 'Experience by level', 'Education and language', 'Most mentioned requirements', 'Requirements by family', 'Work mode', 'Qualitative themes', 'Applicants'],
+    lim_h: 'Limitations', limits: ['The data is a one-week snapshot, so the hypothesis about seasons of rising and falling demand has not been tested yet; it needs weekly collection for months.', 'Ads measure the demand advertised on LinkedIn, not every job available in the market.', 'The reliability coefficient (Krippendorff’s alpha) has not been computed and the automatic coding was not reviewed manually, so all results are labelled preliminary.'],
+    foot: 'Data: public LinkedIn job ads collected on 5 and 7 October 2026 (n = 252). This page shows aggregate numbers only and does not publish ad or company data.',
+  },
+  tr: {
+    brand: 'Türkiye’de teknoloji işlerine talep', pdf: 'Raporun tamamı (PDF)', kicker: 'Uygulamalı araştırma · Veri analizi · 2026',
+    title: 'Türkiye’deki teknoloji iş ilanları ne istiyor?',
+    lead: 'İstanbul, Ankara, Bursa ve Gaziantep’te LinkedIn’deki 252 teknoloji ilanının analizi: talep hangi iş ailelerinden geliyor, hangi deneyim, eğitim, dil ve araçlar isteniyor, ilanlar adaya nasıl sesleniyor.',
+    prelim: 'Ön sonuçlar: güvenilirlik testi henüz tamamlanmadı',
+    k1: 'temizlik sonrası teknoloji ilanı', k2: 'yıl deneyim belirtiyor (186 ilan)', k3: 'yıl: istenen deneyimin medyanı', k4: 'ilanın 200 başvuruya ulaştı',
+    find_h: 'Öne çıkan bulgular',
+    finds: [['Talep yoğunlaşmış', 'Yazılım geliştirme, ağlar ve veri 252 ilanın 166’sını oluşturuyor (%65,9).'], ['Önce deneyim', 'Deneyim belirten “Associate” ilanlarının %75,8’i 3 yıl ve üzerini istiyor.'], ['Her ailenin kendi araçları', 'Siber güvenlik ilanlarının %78,6’sı mesleki sertifika istiyor; yazılımda bu oran %9,0.'], ['İngilizce ve diploma', 'İngilizce ilanların %52,8’inde, lisans diploması %50,4’ünde geçiyor.'], ['Rekabet yüksek', 'Başvuru sayısını gösteren ilanların %79,7’si 200 başvuruya ulaştı (246’dan 196).']],
+    exp_h: 'İş ailesine göre keşfet', exp_p: 'İlan sayısını, medyan deneyimi ve en çok geçen gereksinimleri görmek için bir aile seçin. Temizlenmiş veriden hesaplandı.',
+    ads: 'ilan', median: 'Medyan deneyim', years: 'yıl', english: 'İngilizce istiyor', none: 'ilan sayısı az', top: 'İlanlarda en çok geçenler',
+    method_h: 'Yöntem', s1: 'Toplama', s1p: 'Türkçe ve İngilizce yirmi iş unvanıyla 3 partide (5 ve 7 Ekim 2026) 263 LinkedIn ilanı.', s2: 'Temizlik', s2p: '8 belgelenmiş adım: tekrar yayınlar ve serbest çalışma platformları çıkarıldı, şüpheli ilanlar silinmek yerine işaretlendi. 252 kaldı.', s3: 'Nicel kodlama', s3p: 'Türkçe ve İngilizce anahtar kelimelerle 14 eksen ve 89 göstergeli kılavuz.', s4: 'Nitel analiz', s4p: '20 ilan açıklamasından 592 bölüm, 6 temada 26 kodla kodlandı.',
+    fig_h: 'Rapordaki grafikler', fig_p: 'Nihai rapordan (Arapça). Büyütmek için bir grafiğe tıklayın.',
+    figs: ['İş aileleri', 'Şehirler', 'Seviyeler', 'İstenen deneyim', 'Seviyeye göre deneyim', 'Eğitim ve dil', 'En çok geçen gereksinimler', 'Aileye göre gereksinimler', 'Çalışma biçimi', 'Nitel temalar', 'Başvuru sayısı'],
+    lim_h: 'Sınırlılıklar', limits: ['Veri bir haftalık bir kesit; talebin yükseldiği ve düştüğü dönemlere dair hipotez henüz test edilmedi, aylarca haftalık toplama gerekiyor.', 'İlanlar LinkedIn’de ilan edilen talebi ölçer, piyasadaki tüm işleri değil.', 'Güvenilirlik katsayısı (Krippendorff alfa) henüz hesaplanmadı ve otomatik kodlama elle gözden geçirilmedi; bu yüzden tüm sonuçlar ön sonuçtur.'],
+    foot: 'Veri: 5 ve 7 Ekim 2026’da toplanan herkese açık LinkedIn ilanları (n = 252). Bu sayfa yalnızca toplu sayıları gösterir; ilan ve şirket verisi yayınlamaz.',
+  },
+};
+// Family and requirement names from the dataset are in Arabic; these are their translations.
+const NAMES = {
+  'تطوير برمجيات': ['Software development', 'Yazılım geliştirme'], 'شبكات وأنظمة وبنية تحتية': ['Networks, systems & infrastructure', 'Ağ, sistem ve altyapı'], 'بيانات وذكاء اصطناعي': ['Data & AI', 'Veri ve yapay zekâ'], 'أمن سيبراني': ['Cybersecurity', 'Siber güvenlik'], 'دعم فني': ['Technical support', 'Teknik destek'], 'تصميم واجهات': ['UI/UX design', 'Arayüz tasarımı'], 'تقنية أخرى': ['Other tech', 'Diğer teknoloji'], 'DevOps وسحابة': ['DevOps & cloud', 'DevOps ve bulut'], 'ERP وSAP': ['ERP & SAP', 'ERP ve SAP'], 'اختبار وجودة': ['Testing & QA', 'Test ve kalite'], 'تطبيقات الهاتف': ['Mobile apps', 'Mobil uygulamalar'],
+  'حل المشكلات والتفكير التحليلي': ['Problem solving & analytical thinking', 'Problem çözme ve analitik düşünme'], 'هندسة أو تخصص ذو صلة': ['Engineering or a related field', 'Mühendislik veya ilgili alan'], 'أي شهادة مذكورة': ['Any professional certificate', 'Herhangi bir sertifika'], 'عن بعد': ['Remote', 'Uzaktan'], 'هجين': ['Hybrid', 'Hibrit'], 'في المكتب': ['On-site', 'Ofiste'], 'العمل ضمن فريق': ['Teamwork', 'Takım çalışması'], 'التواصل': ['Communication', 'İletişim'], 'بكالوريوس': ["Bachelor's degree", 'Lisans'], 'هندسة حاسوب أو علومه': ['Computer engineering or science', 'Bilgisayar mühendisliği/bilimi'], 'الإنجليزية': ['English', 'İngilizce'], 'السفر': ['Travel', 'Seyahat'], 'شهادات أمن (CISSP، CEH، OSCP، Security+)': ['Security certificates (CISSP, CEH, OSCP, Security+)', 'Güvenlik sertifikaları (CISSP, CEH, OSCP, Security+)'], 'Windows Server وActive Directory': ['Windows Server & Active Directory', 'Windows Server ve Active Directory'], 'TCP/IP، DNS، DHCP': ['TCP/IP, DNS, DHCP', 'TCP/IP, DNS, DHCP'], 'VPN، VLAN': ['VPN, VLAN', 'VPN, VLAN'],
+};
+const FIGS = ['f1_families', 'f2_cities', 'f3_levels', 'f4_experience', 'f5_exp_level', 'f6_edu_lang', 'f7_top_req', 'f8_heatmap', 'f9_workmode', 'f10_themes', 'f11_applicants'];
+const LANGS = ['ar', 'en', 'tr'];
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const store = { get: (k, d) => { try { return localStorage.getItem(k) || d; } catch { return d; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+const q = new URLSearchParams(location.search).get('lang');
+let lang = LANGS.includes(q) ? q : store.get('tj-lang', 'ar');
+let data = null, fam = null;
+const name = (s) => (lang === 'ar' ? s : (NAMES[s] || [s, s])[lang === 'en' ? 0 : 1]);
+const num = (n) => new Intl.NumberFormat(lang === 'ar' ? 'ar-u-nu-latn' : lang === 'tr' ? 'tr-TR' : 'en-GB', { maximumFractionDigits: 1 }).format(n);
+
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = t.brand;
+  document.querySelectorAll('[data-t]').forEach((el) => (el.textContent = t[el.dataset.t]));
+  $('#lang').textContent = LANGS[(LANGS.indexOf(lang) + 1) % 3].toUpperCase();
+  $('#find').innerHTML = t.finds.map(([h, p]) => `<div><strong>${esc(h)}:</strong> ${esc(p)}</div>`).join('');
+  $('#limits').innerHTML = t.limits.map((l) => `<li>${esc(l)}</li>`).join('');
+  $('#gallery').innerHTML = FIGS.map((f, i) => `<figure data-src="fig/${f}.png"><img src="fig/${f}.png" alt="${esc(t.figs[i])}" loading="lazy" /><figcaption>${esc(t.figs[i])}</figcaption></figure>`).join('');
+  if (data) explorer();
+}
+
+function explorer() {
+  const t = T[lang];
+  const fams = Object.entries(data.families);
+  fam ??= fams[0][0];
+  $('#fams').innerHTML = fams.map(([k, v]) => `<button class="fam ${k === fam ? 'on' : ''}" data-f="${esc(k)}"><span>${esc(name(k))}</span><b>${v.n}</b></button>`).join('');
+  const f = data.families[fam];
+  const small = f.n < 10;
+  $('#panel').innerHTML = `<h3>${esc(name(fam))}</h3>
+    <div class="stats"><span>${f.n} ${t.ads} · ${num((100 * f.n) / data.n)}%</span><span>${t.median}: ${f.exp_median == null ? '—' : num(f.exp_median) + ' ' + t.years}</span><span>${num(f.english)}% ${t.english}</span></div>
+    <b>${t.top}</b>
+    ${f.top.map((r) => `<div class="bar"><span>${esc(name(r.name))}</span><i><b style="width:0" data-w="${r.pct}"></b></i><em>${num(r.pct)}%</em></div>`).join('')}
+    ${small ? `<p class="note">⚠ ${t.none} (n = ${f.n})</p>` : ''}`;
+  requestAnimationFrame(() => document.querySelectorAll('#panel [data-w]').forEach((b) => (b.style.width = b.dataset.w + '%')));
+}
+
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-f]');
+  if (b) { fam = b.dataset.f; explorer(); }
+  const fig = e.target.closest('figure');
+  if (fig) { $('#zoom img').src = fig.dataset.src; $('#zoom').hidden = false; }
+  if (e.target.closest('#zoom')) $('#zoom').hidden = true;
+});
+addEventListener('keydown', (e) => e.key === 'Escape' && ($('#zoom').hidden = true));
+$('#lang').addEventListener('click', () => { lang = LANGS[(LANGS.indexOf(lang) + 1) % 3]; store.set('tj-lang', lang); render(); });
+$('#theme').addEventListener('click', () => store.set('tj-theme', document.documentElement.classList.toggle('dark') ? 'dark' : 'light'));
+render();
+fetch('data.json').then((r) => r.json()).then((d) => { data = d; explorer(); });
+</script>
+</body>
+</html>
