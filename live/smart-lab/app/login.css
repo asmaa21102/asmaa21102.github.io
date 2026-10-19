@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eaf8ff, #f8fcff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    width: 92%;
+    max-width: 1100px;
+    min-height: 620px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    background: white;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(18, 129, 201, 0.22);
+}
+
+.auth-left {
+    padding: 55px 45px;
+    background: linear-gradient(160deg, #18c9ec, #0f91d5 45%, #0b67b2);
+    color: white;
+    position: relative;
+}
+
+.auth-left::after {
+    content: "\f0c3";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 35px;
+    bottom: 25px;
+    font-size: 170px;
+    color: rgba(255,255,255,0.13);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.brand img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: white;
+    padding: 6px;
+}
+
+.brand h1 {
+    font-size: 40px;
+    letter-spacing: 2px;
+}
+
+.brand p {
+    font-size: 13px;
+    opacity: 0.95;
+}
+
+.auth-left h2 {
+    font-size: 46px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.auth-left h2 span {
+    color: #eaffff;
+}
+
+.desc {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 390px;
+    position: relative;
+    z-index: 2;
+}
+
+.feature-grid {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.feature {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 22px;
+    padding: 22px;
+    backdrop-filter: blur(10px);
+}
+
+.feature i {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.feature p {
+    font-weight: 700;
+}
+
+.auth-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #ffffff, #f2fbff);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    border-radius: 34px;
+    padding: 45px 42px;
+    box-shadow: 0 25px 70px rgba(16, 118, 180, 0.16);
+    border: 1px solid rgba(18, 150, 220, 0.12);
+}
+
+.card-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #18c5e8, #0b78c4);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.login-card h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #104b73;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b8797;
+    margin-bottom: 32px;
+}
+
+.error-box {
+    background: #ffe7e7;
+    color: #b91c1c;
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #15577f;
+    font-weight: 700;
+}
+
+.input-box {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1.7px solid #cce8f5;
+    border-radius: 17px;
+    padding: 0 18px;
+    background: #fbfeff;
+}
+
+.input-box:focus-within {
+    border-color: #16bfe4;
+    box-shadow: 0 0 0 4px rgba(22,191,228,0.13);
+}
+
+.input-box i {
+    color: #1597cf;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 15px;
+    color: #12384f;
+}
+
+.login-btn {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #18c5e8, #0b78c4);
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 28px;
+    color: #6b8797;
+}
+
+.register-link a {
+    color: #0b83c7;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+@media (max-width: 900px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-left {
+        display: none;
+    }
+}

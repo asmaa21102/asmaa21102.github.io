@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket Tic-Tac-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main class="app">
+        <header class="bar">
+            <div class="brand"><span class="logo">#</span><div><b>Socket Tic-Tac-Toe</b><small data-i18n="tag"></small></div></div>
+            <button class="ghost sm" id="lang">TR</button>
+        </header>
+
+        <section id="lobby" class="card">
+            <h1 data-i18n="lobby_title"></h1>
+            <p class="muted" data-i18n="lobby_p"></p>
+            <label class="field"><span data-i18n="your_name"></span><input id="name" maxlength="20" autocomplete="nickname" /></label>
+            <button class="primary wide" id="create" data-i18n="create"></button>
+            <div class="or"><span data-i18n="or"></span></div>
+            <div class="join">
+                <input id="code" maxlength="5" placeholder="ABCDE" autocapitalize="characters" />
+                <button class="ghost" id="join" data-i18n="join"></button>
+            </div>
+            <p class="error" id="lobby-error" role="alert"></p>
+            <details class="how"><summary data-i18n="how"></summary><p data-i18n="how_p"></p></details>
+        </section>
+
+        <section id="game" hidden>
+            <div class="share card">
+                <div><small class="muted" data-i18n="room"></small><b id="room-code"></b></div>
+                <button class="ghost sm" id="copy" data-i18n="copy"></button>
+            </div>
+            <div class="players">
+                <div class="player" id="pX"><span class="mark x">X</span><div><b class="pname"></b><small class="pyou" data-i18n="you"></small></div><strong class="pscore">0</strong></div>
+                <div class="draws"><small data-i18n="draws"></small><strong id="draws">0</strong></div>
+                <div class="player" id="pO"><span class="mark o">O</span><div><b class="pname"></b><small class="pyou" data-i18n="you"></small></div><strong class="pscore">0</strong></div>
+            </div>
+            <p class="status" id="status" aria-live="polite"></p>
+            <div class="board" id="board" role="grid"></div>
+            <div class="actions">
+                <button class="primary" id="rematch" hidden></button>
+                <div class="emojis" id="emojis"></div>
+            </div>
+            <button class="link" id="leave" data-i18n="leave"></button>
+        </section>
+        <p class="conn" id="conn"></p>
+    </main>
+    <div class="float-emoji" id="float"></div>
+    <script src="ws-shim.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
